@@ -16,3 +16,11 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+
+test('has button href and text', async({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  const locator = page.locator('.getStarted_Sjon');
+  await expect(locator).toHaveText(/Get started/);
+  await expect(locator).toHaveAttribute('href', '/docs/intro');
+});
